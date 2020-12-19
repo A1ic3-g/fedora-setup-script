@@ -5,7 +5,7 @@ echo "RUN AS ROOT"
 dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+echo "fastestmirror=1" >> /etc/dnf/dnf.conf
 
 #chrome
 dnf install fedora-workstation-repositories
@@ -21,16 +21,17 @@ dnf install git vlc code google-chrome-stable google-roboto-fonts la-capitaine-i
 #git config
 git config --global user.name "MorphTail"
 git config --global user.email "chitniskshitij@gmail.com"
+git config --global credential.helper store
 
 #zsh and stuff
 git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
-sudo ./~/.nerd-fonts/install.sh
+sudo bash ~/.nerd-fonts/install.sh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-echo "manual intervention: "
+echo "manual intervention (not yet automated): "
 echo "1) change zsh theme (powerlevel10k/powerlevel10k) "
 echo "2) add zsh plugins (zsh-syntax-highlighting zsh-autosuggestions) "
 echo "3)download and set up gtk theme and fonts"
