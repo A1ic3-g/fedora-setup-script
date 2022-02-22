@@ -6,6 +6,10 @@ dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 echo "fastestmirror=1" >> /etc/dnf/dnf.conf
+echo "deltarpm=True" >> /etc/dnf/dnf.conf
+
+#codecs
+sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 
 #chrome
 dnf install fedora-workstation-repositories
@@ -19,8 +23,8 @@ sudo dnf check-update
 dnf install git vlc code google-chrome-stable google-roboto-fonts la-capitaine-icon-theme breeze-cursor-theme gimp inkscape gnome-tweak-tool wget curl zsh util-linux-user redhat-rpm-config gcc gcc-c++ make fontawesome-fonts -y
 
 #git config
-git config --global user.name "MorphTail"
-git config --global user.email "chitniskshitij@gmail.com"
+git config --global user.name ""
+git config --global user.email ""
 git config --global credential.helper store
 
 #zsh and stuff
